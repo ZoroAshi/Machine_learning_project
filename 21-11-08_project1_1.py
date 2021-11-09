@@ -35,6 +35,6 @@ def franke_fct(x,y) :
 """
 tests
 """
-x,y = 0.2,0.8
+x,y = 0.7,0.8
 test = franke_fct(x,y)
 print(test)
