@@ -33,8 +33,23 @@ def franke_fct(x,y) :
 	return f
 
 """
+generate the datas
+"""
+
+n_col = 6
+n_row = 10
+
+X = np.random.uniform(0,1,n_row)
+Y = np.random.uniform(0,1,n_row)
+
+matrix = np.zeros(n_col)
+
+print(matrix)
+
+"""
 tests
 """
-x,y = 0.7,0.8
-test = franke_fct(x,y)
-print(test)
+# x,y = 0.5,0.5	# [x,y] E [0,1]²
+
+# test = franke_fct(x,y)
+# print(test)
