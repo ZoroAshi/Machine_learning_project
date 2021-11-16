@@ -8,54 +8,33 @@ date : 08/11/2021
 Importations
 """
 
+
 from mpl_toolkits.mplot3d import Axes3D
 import matplotlib.pyplot as plt
 from matplotlib import cm
 from matplotlib.ticker import LinearLocator, FormatStrFormatter
 import numpy as np
 from random import random, seed
-
-import sklearn as skl
-
-"""
-Franke's function
-"""
-
-def franke_fct(x,y) :
-	
-	terme_1 = (3/4)*np.exp(-((9*x - 2)**2)/4 -((9*y - 2)**2)/4)
-	terme_2 = (3/4)*np.exp(-((9*x +1)**2)/49 -((9*y + 1))/10)
-	terme_3 = (1/2)*np.exp(-((9*x -7)**2)/4 -((9*y - 3))/4)
-	terme_4 = (1/5)*np.exp(-((9*x -4)**2) -((9*y - 7)**2))
-	
-	f = terme_1 + terme_2 + terme_3 - terme_4
-	
-	return f
-
-"""
-generate the datas
-"""
-
-n_col = 6
-n_row = 10
-
-X = np.random.uniform(0,1,n_row)
-Y = np.random.uniform(0,1,n_row)
-
-matrix = np.zeros(n_col)
-
-print(matrix)
-""" 
-noise
-"""
-noise=0.05
-X_n = np.random.uniform(0,noise,n_row)
-Y_n= np.random.uniform(0,noise,n_row)
-
-"""
-tests
-"""
-# x,y = 0.5,0.5	# [x,y] E [0,1]²
-
-# test = franke_fct(x,y)
-# print(test)
+fig = plt.figure()
+ax = fig.gca(projection=’3d’)
+# Make data.
+x = np.arange(0, 1, 0.05)
+y = np.arange(0, 1, 0.05)
+x, y = np.meshgrid(x,y)
+def FrankeFunction(x,y):
+term1 = 0.75*np.exp(-(0.25*(9*x-2)**2) - 0.25*((9*y-2)**2))
+term2 = 0.75*np.exp(-((9*x+1)**2)/49.0 - 0.1*(9*y+1))
+term3 = 0.5*np.exp(-(9*x-7)**2/4.0 - 0.25*((9*y-3)**2))
+term4 = -0.2*np.exp(-(9*x-4)**2 - (9*y-7)**2)
+return term1 + term2 + term3 + term4
+z = FrankeFunction(x, y)
+# Plot the surface.
+surf = ax.plot_surface(x, y, z, cmap=cm.coolwarm,
+linewidth=0, antialiased=False)
+# Customize the z axis.
+ax.set_zlim(-0.10, 1.40)
+ax.zaxis.set_major_locator(LinearLocator(10))
+ax.zaxis.set_major_formatter(FormatStrFormatter(’%.02f’))
+# Add a color bar which maps values to colors.
+fig.colorbar(surf, shrink=0.5, aspect=5)
+plt.show()
