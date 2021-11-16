@@ -18,7 +18,7 @@ import numpy as np
 from random import random, seed
 
 fig = plt.figure()
-ax = fig.gca(projection=’3d’)
+ax = fig.gca(projection="3d")
 
 # Make data
 
@@ -45,7 +45,7 @@ surf = ax.plot_surface(x, y, z, cmap=cm.coolwarm, linewidth=0, antialiased=False
 
 ax.set_zlim(-0.10, 1.40)
 ax.zaxis.set_major_locator(LinearLocator(10))
-ax.zaxis.set_major_formatter(FormatStrFormatter(’%.02f’))
+ax.zaxis.set_major_formatter(FormatStrFormatter("%.02f"))
 
 # Add a color bar which maps values to colors
 
