@@ -1,6 +1,6 @@
 """
 title : 21-11-08_project1_1.py
-authors : BOUCHARD Ignace ; LEJUEZ Anthony ; DELILE Hugo
+authors : BOUCHARD Ignace ; LEJUEZ Anthony ; DELILLE Hugo
 date : 08/11/2021
 """
 
