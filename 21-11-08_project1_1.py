@@ -39,9 +39,7 @@ z = FrankeFunction(x, y)
 
 # Plot the surface
 
-surf = ax.plot_surface(x, y, z, cmap=cm.coolwarm,
-
-linewidth=0, antialiased=False)
+surf = ax.plot_surface(x, y, z, cmap=cm.coolwarm, linewidth=0, antialiased=False)
 
 # Customize the z axis
 
