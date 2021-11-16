@@ -45,10 +45,12 @@ Y = np.random.uniform(0,1,n_row)
 matrix = np.zeros(n_col)
 
 print(matrix)
-
 """ 
 noise
 """
+noise=0.05
+X_n = np.random.uniform(0,noise,n_row)
+Y_n= np.random.uniform(0,noise,n_row)
 
 """
 tests
