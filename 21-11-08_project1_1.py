@@ -14,7 +14,7 @@ import matplotlib.pyplot as plt
 from matplotlib import cm
 from matplotlib.ticker import LinearLocator, FormatStrFormatter
 
-import panda as pd
+import pandas as pd
 import numpy as np
 from random import random, seed
 
@@ -51,8 +51,23 @@ ax.zaxis.set_major_formatter(FormatStrFormatter("%.02f"))
 # Add a color bar which maps values to colors
 
 fig.colorbar(surf, shrink=0.5, aspect=5)
-plt.show()
+# plt.show()
 
 
 # Part a)
+
+# creation of the matrix (x,y,x²,xy)
+
+matrix = np.zeros((len(y),5))
+matrix[:,4] = x*y
+matrix[:,3] = x*x
+matrix[:,2] = y
+matrix[:,1] = x
+matrix[:,0] = 1
+
+print(matrix)
+
+# Tests
+
+
 
