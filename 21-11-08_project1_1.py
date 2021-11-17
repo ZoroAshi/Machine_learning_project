@@ -58,7 +58,7 @@ plt.show()
 
 # creation of the matrix (x,y,x²,xy)
 
-matrix = np.zeros((len(y0)**2,6))
+matrix = np.zeros((len(y0)**2,20))
 
 # First column
 
@@ -74,7 +74,7 @@ for k in range(len(x0)):
 
 matrix[:,1] = X0
 
-# Third column
+# 3rd column
 
 Y0 = []
 for k in range(len(y0)) :
@@ -84,7 +84,7 @@ for k in range(len(y0)) :
 
 matrix[:,2] = Y0
 
-# Fourth column
+# 4th column
 
 X02 = []
 for k in range(len(x0)**2):
@@ -92,7 +92,7 @@ for k in range(len(x0)**2):
 
 matrix[:,3] = X02
 
-# Fith column
+# 5th column
 
 Y02 = []
 for k in range(len(y0)**2):
@@ -100,7 +100,7 @@ for k in range(len(y0)**2):
 	
 matrix[:,4] = Y02
 
-# six column
+# 6th column
 
 X0Y0 = []
 for k in range(len(x0)*len(y0)):
@@ -108,6 +108,47 @@ for k in range(len(x0)*len(y0)):
 	
 matrix[:,5] = X0Y0
 
+
+#7th column
+
+X03 = []
+for k in range(len(x0)*len(y0)):
+	X03.append(X0[k]*X0[k]*X0[k])
+
+matrix[:,6] = X03
+
+
+#8th column
+
+Y03 = []
+for k in range(len(x0)*len(y0)):
+	Y03.append(Y0[k]*Y0[k]*Y0[k])
+
+matrix[:,7] = Y03
+
+#9th column
+
+X02Y0 = []
+for k in range(len(x0)*len(y0)):
+	X02Y0.append(X0[k]*X0[k]*Y0[k]) 
+	
+matrix[:,8] = X02Y0
+	
+#10th column 	
+ 
+X0Y02 = []
+for k in range(len(x0)*len(y0)):
+	X0Y02.append(X0[k]*Y0[k]*Y0[k])
+	
+matrix[:,9] = X0Y02
+
+#11th column
+
+X04 = []
+for k in range(len(x0)*len(y0)):
+	X04.append(X0[k]*X0[k]*X0[k]*X0[k])
+	
+matrix[:,10] = X04
 
 # print(matrix)
 
