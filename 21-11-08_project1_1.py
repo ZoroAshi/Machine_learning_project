@@ -8,7 +8,6 @@ date : 08/11/2021
 Importations
 """
 
-
 from mpl_toolkits.mplot3d import Axes3D
 import matplotlib.pyplot as plt
 from matplotlib import cm
@@ -18,15 +17,16 @@ import pandas as pd
 import numpy as np
 from random import random, seed
 
+plt.close()
 fig = plt.figure()
 ax = fig.gca(projection="3d")
 
 # Make data
 
-x = np.arange(0, 1, 0.05)
-y = np.arange(0, 1, 0.05)
+x0 = np.arange(0, 1, 0.05)
+y0 = np.arange(0, 1, 0.05)
 
-x, y = np.meshgrid(x,y)
+x, y = np.meshgrid(x0,y0)
 
 def FrankeFunction(x,y):
 	term1 = 0.75*np.exp(-(0.25*(9*x-2)**2) - 0.25*((9*y-2)**2))
@@ -51,21 +51,35 @@ ax.zaxis.set_major_formatter(FormatStrFormatter("%.02f"))
 # Add a color bar which maps values to colors
 
 fig.colorbar(surf, shrink=0.5, aspect=5)
-# plt.show()
+plt.show()
 
 
 # Part a)
 
 # creation of the matrix (x,y,x²,xy)
 
-matrix = np.zeros((len(y),5))
-matrix[:,4] = x*y
-matrix[:,3] = x*x
-matrix[:,2] = y
-matrix[:,1] = x
+matrix = np.zeros((len(y0)**2,6))
+
+# First column
+
 matrix[:,0] = 1
 
-print(matrix)
+# Second column
+
+X0 = []
+for k in range(len(x0)):
+	for i in range(len(x0)) :
+		xk =  x0[k]
+		X0.append(xk)
+
+# Third column
+
+Y0 = []
+for k in range(len(y0)) :
+	for i in range(len(y0)) :
+		yk = x0[i]
+		Y0.append(yk)
+
 
 # Tests
 
