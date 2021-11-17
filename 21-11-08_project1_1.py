@@ -14,6 +14,7 @@ import matplotlib.pyplot as plt
 from matplotlib import cm
 from matplotlib.ticker import LinearLocator, FormatStrFormatter
 
+import panda as pd
 import numpy as np
 from random import random, seed
 
@@ -54,3 +55,4 @@ plt.show()
 
 
 # Part a)
+
