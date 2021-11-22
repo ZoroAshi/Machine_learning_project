@@ -174,3 +174,15 @@ print(matrix)
 print(len(matrix))
 print(X)
 print(len(X))
+
+X_train,X_test,z_train,z_test=train_test_split(X,z,test_size=0.2)
+beta=np.linalg.inv(X_train.T@ X_train)@_train.T@z_train
+z_tild=X_train@beta
+z_predict=X_test@beta
+R2_test=r2_score(z_test,z_predict)
+R2_train=r2_score(z_train,z_tild)
+MSE_test=mean_squared_error(z_test,z_predict)
+MSE_train=mean_squared_error(z_train,z_tild)
+plt.figure(1)
+#plt.show()
+
