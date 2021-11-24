@@ -68,7 +68,7 @@ for i in range (k):
         X = create_X(x,y,n)
     
         X_train,X_test,z_train,z_test=train_test_split(X,z,test_size=0.2)
-        beta=np.linalg.inv(X_train.T@ X_train)@X_train.T@z_train
+        beta=np.linalg.pinv(X_train.T@ X_train)@X_train.T@z_train
         z_tild=X_train@beta
         z_predict=X_test@beta
         R2_test=r2_score(z_test,z_predict)
