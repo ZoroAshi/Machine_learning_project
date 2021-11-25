@@ -28,14 +28,20 @@ def FrankeFunction(x,y):
 
 noise_z=noise()
 complexity=[]
-r2_test,r2_train=[0]*6,[0]*6
+r2_test,r2_train=[],[]
 r2_test_,r2_train_=[],[]
-mse_test,mse_train=[0]*6,[0]*6
+mse_test,mse_train=[],[]
 mse_test_,mse_train_=[],[]
 
 seed_x=np.random.RandomState(123456)
 seed_y=np.random.RandomState(654321)
-N=[20,200,2000,10000,20000,100000]
+N=[]
+N_max=20
+
+while N_max <10000 :
+    N_max=int(N_max*1.1)
+    N.append(N_max)
+print(N)
 
 def create_X(x, y, n ):
 	if len(x.shape) > 1:
@@ -51,7 +57,9 @@ def create_X(x, y, n ):
 	return X
 
 
-for j in range (6):
+for j in range (len(N)):
+    mse_test_,mse_train_=[],[]
+    r2_test_,r2_train_=[],[]
     k=N[j]
     x=np.sort(seed_x.uniform(0,1,k))
     y=np.sort(seed_y.uniform(0,1,k))
@@ -64,12 +72,9 @@ for j in range (6):
     
     k=100
     order=6
-    for i in range (order):
-        complexity.append(i)
 
     for i in range (k):
 
-    
         
         X_train,X_test,z_train,z_test=train_test_split(X,z,test_size=0.2)
         
@@ -86,23 +91,18 @@ for j in range (6):
         r2_train_.append(R2_train)
         mse_test_.append(MSE_test)
         mse_train_.append(MSE_train)
-        
-    r2_test=[r2_test+r2_test_ for r2_test,r2_test_ in zip(r2_test,r2_test_)]
-    r2_train=[r2_test+r2_test_ for r2_test,r2_test_ in zip(r2_train,r2_train_)]
-    mse_test=[r2_test+r2_test_ for r2_test,r2_test_ in zip(mse_test,mse_test_)]
-    mse_train=[r2_test+r2_test_ for r2_test,r2_test_ in zip(mse_train,mse_train_)]
 
-    r2_test  =[i*(1/k) for i in r2_test]
-    r2_train =[i*(1/k) for i in r2_train]
-    mse_test =[i*(1/k) for i in mse_test]
-    mse_train=[i*(1/k) for i in mse_train]
+    r2_test_mean=sum(r2_test_)*1/k
+    r2_train_mean=sum(r2_train_)*1/k
+    mse_test_mean=sum(mse_test_)*1/k
+    mse_train_mean=sum(mse_train_)*1/k
     
-    """
-    print("MSE train true ={} ".format(mse_train[5]))
-    print("MSE test true  ={} ".format(mse_test[5]))
-    print("R2 train true  ={} ".format(r2_train[5]))
-    print("R2 test true   ={} ".format(r2_test[5]))
-    """
+    r2_test.append(r2_test_mean)
+    r2_train.append(r2_train_mean)
+    mse_test.append(mse_test_mean)
+    mse_train.append(mse_train_mean)
+    
+
   
 plt.figure(1)
 plt.plot(N,mse_test,label='MSE test')
