@@ -170,7 +170,7 @@ def create_X(x, y, n ):
 			X[:,q+k] = (x**(i-k))*(y**k)
 	return X
 
-X = create_X(x,y,2)
+X = create_X(x,y,5)
 print(matrix)
 print(len(matrix))
 print(X)
