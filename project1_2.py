@@ -8,12 +8,8 @@ import sklearn.linear_model as skl
 import pandas as pd
 import numpy as np
 from random import random, seed
+from sklearn.preprocessing import StandardScaler
 
-def noise():
-    seed_noise=np.random.RandomState(314159)
-    noise=seed_noise.normal(0,1)
-
-    return noise
 
 def FrankeFunction(x,y):
 	term1 = 0.75*np.exp(-(0.25*(9*x-2)**2) - 0.25*((9*y-2)**2))
@@ -24,15 +20,13 @@ def FrankeFunction(x,y):
 	return term1 + term2 + term3 + term4 
 
 
-
-noise_z=noise()
 N=10000
 seed_x=np.random.RandomState(123456)
 seed_y=np.random.RandomState(654321)
 x=np.sort(seed_x.uniform(0,1,N))
 y=np.sort(seed_y.uniform(0,1,N))
 
-z = FrankeFunction(x,y)+noise_z
+z = FrankeFunction(x,y)
 
 
 def create_X(x, y, n ):
@@ -57,8 +51,8 @@ mse_test_,mse_train_=[],[]
 
     #bootstrap
 k=1000
-order=10
-for i in range (order):
+order=5
+for i in range (order+1):
     complexity.append(i)
 
 for i in range (k):
@@ -66,6 +60,12 @@ for i in range (k):
     
     for n in range(order):
         X = create_X(x,y,n)
+	
+	scaler = StandardScaler()
+	
+	print(scaler.X)
+	
+	
     
         X_train,X_test,z_train,z_test=train_test_split(X,z,test_size=0.2)
         beta=np.linalg.pinv(X_train.T@ X_train)@X_train.T@z_train
