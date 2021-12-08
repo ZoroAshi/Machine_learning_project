@@ -8,7 +8,7 @@ import sklearn.linear_model as skl
 import pandas as pd
 import numpy as np
 from random import random, seed
-from sklearn.preprocessing import StandardScaler
+
 
 
 def FrankeFunction(x,y):
