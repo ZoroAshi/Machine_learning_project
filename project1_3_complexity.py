@@ -26,7 +26,7 @@ def FrankeFunction(x,y):
 
 
 noise_z=noise()
-N=1000
+N=20
 seed_x=np.random.RandomState(123456)
 seed_y=np.random.RandomState(654321)
 x=np.sort(seed_x.uniform(0,1,N))
