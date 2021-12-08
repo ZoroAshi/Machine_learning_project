@@ -38,7 +38,7 @@ seed_y=np.random.RandomState(654321)
 N=[]
 N_max=20
 
-while N_max <10000 :
+while N_max <100 :
     N_max=int(N_max*1.1)
     N.append(N_max)
 print(N)
@@ -107,6 +107,7 @@ for j in range (len(N)):
 plt.figure(1)
 plt.plot(N,mse_test,label='MSE test')
 plt.plot(N,mse_train,label='MSE train')
+
 plt.xscale('log')
 #plt.axis([0,30,0,20])
 plt.legend()
@@ -114,7 +115,9 @@ plt.legend()
 plt.figure(2)
 plt.plot(N,r2_test,label='R2 test')
 plt.plot(N,r2_train,label='R2 train')
+#plt.ylim([-2,2])
 plt.xscale('log')
+
 plt.legend()
 
 
