@@ -60,12 +60,6 @@ for i in range (k):
     
     for n in range(order):
         X = create_X(x,y,n)
-	
-	scaler = StandardScaler()
-	
-	print(scaler.X)
-	
-	
     
         X_train,X_test,z_train,z_test=train_test_split(X,z,test_size=0.2)
         beta=np.linalg.pinv(X_train.T@ X_train)@X_train.T@z_train
