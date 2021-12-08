@@ -28,7 +28,7 @@ def FrankeFunction(x,y):
 
 seed_x=np.random.RandomState(123456)
 seed_y=np.random.RandomState(654321)
-N_max=100
+N_max=1000
 
 sigma=[]
 complexity=[]
