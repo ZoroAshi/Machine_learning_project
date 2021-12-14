@@ -8,6 +8,9 @@ import sklearn.linear_model as skl
 import pandas as pd
 import numpy as np
 from random import random, seed
+from sklearn.preprocessing import MinMaxScaler, StandardScaler, Normalizer
+
+
 def noise():
     seed_noise=np.random.RandomState(314159)
     noise=seed_noise.normal(0,1)
@@ -25,13 +28,16 @@ def FrankeFunction(x,y):
 
 
 noise_z=noise()
+
 N=1000
 seed_x=np.random.RandomState(123456)
 seed_y=np.random.RandomState(654321)
 x=np.sort(seed_x.uniform(0,1,N))
 y=np.sort(seed_y.uniform(0,1,N))
 
+
 z = FrankeFunction(x,y)+noise_z
+
 
 
 def create_X(x, y, n ):
@@ -51,8 +57,8 @@ complexity=[]
 r2_test,r2_train=[],[]
 mse_test,mse_train=[],[]
 
-
-for n in range(30):
+order = 30
+for n in range(order+1):
     X = create_X(x,y,n)
     #print(matrix)
     #print(len(matrix))
@@ -60,10 +66,16 @@ for n in range(30):
     #print(len(X))
 
  
-    X_train,X_test,z_train,z_test=train_test_split(X,z,test_size=0.2)
-    beta=np.linalg.pinv(X_train.T@ X_train)@X_train.T@z_train
-    z_tild=X_train@beta
-    z_predict=X_test@beta
+    X_train, X_test, z_train, z_test = train_test_split(X, z, test_size=0.2)
+    
+    scaler = StandardScaler()
+    scaler.fit(X_train)
+    X_train_scaled = scaler.transform(X_train)
+    X_test_scaled = scaler.transform(X_test)
+
+    beta = np.linalg.pinv(X_train_scaled.T@ X_train_scaled) @ X_train_scaled.T @ z_train
+    z_tild = X_train_scaled @ beta
+    z_predict = X_test_scaled @ beta
     #print(len(z_tild))
     #print(len(z_predict))
     R2_test=r2_score(z_test,z_predict)
