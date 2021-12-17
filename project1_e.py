@@ -28,7 +28,7 @@ def multiplicity(n=1,N=1) : # n = number of features ; N = multiplicity
 
 	# Initialisation
 	count_1 = 0
-	Matrix = np.zeros((N,n,N))
+	Matrix = np.zeros((N,1,n))
 
 	# Begining of the big loop
 
@@ -40,8 +40,7 @@ def multiplicity(n=1,N=1) : # n = number of features ; N = multiplicity
 
 		if count_1 == 0:
 			for a in range(n):
-				Matrix[count_1,a,a] = a+1
-
+				Matrix[count_1,0,a] = a
 
 		elif count_1 == 1:
 			x1 = 0
@@ -51,7 +50,7 @@ def multiplicity(n=1,N=1) : # n = number of features ; N = multiplicity
 			a = 0
 
 			while x2 < n :
-				Matrix[count_1,a]=L
+				Matrix[count_1,0]=L
 				x2 += 1
 				a += 1
 
