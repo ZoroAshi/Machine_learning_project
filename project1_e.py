@@ -32,13 +32,30 @@ def multiplicity(n=1,N=n) : # n = number of features ; N = multiplicity
 
 	# Begining of the big loop
 
-	for k in range(N) :
-		count_1 += 1
+	while count_1 < N:
+		count_1 += 1	# counter of layers
+		count_2 = 0 	# counter of position
 
 		# fullfill the individuals values
 
 		if count_1 == 1:
 			for a in range(n):
-				Matrix[0][a] = a+1
+				Matrix[count_2][a] = a+1
 
-		
+
+		elif count_1 == 2:
+			x1,x2 = 0,1
+			a = 0
+
+			while x2 < n :
+
+				Matrix[count_2][a] = np.array((x1,x2))
+				x2 += 1
+
+			elif x1 < n-1 :
+
+				x1 +=1 
+
+
+
+
