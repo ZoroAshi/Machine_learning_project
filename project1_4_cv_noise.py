@@ -127,6 +127,7 @@ plt.xscale('log')
 plt.xlabel('noise')
 plt.ylabel('mse')
 plt.legend()
+plt.savefig("cross_validation_Noise_MSE.png")
 
 plt.figure(2)
 plt.plot(sigma,mse_test_cv5,label='MSE test cv 5')
@@ -137,6 +138,6 @@ plt.xscale('log')
 plt.xlabel('noise')
 plt.ylabel('MSE')
 plt.legend()
-
+plt.savefig("cross_validation_Noise_MSE_zoom.png")
 plt.show()
 
