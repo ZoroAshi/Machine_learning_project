@@ -132,7 +132,7 @@ plt.plot(N,mse_train_cv10,label='MSE train cv 10')
 
 plt.xscale('log')
 plt.legend()
-
+plt.savefig("cross_validation_Ndata_MSE.png")
 
 plt.figure(2)
 plt.plot(N,mse_test_cv5,label='MSE test cv 5')
@@ -142,6 +142,6 @@ plt.plot(N,mse_train_cv10,label='MSE train cv 10')
 plt.xlabel('Ndata')
 plt.ylabel('MSE')
 plt.legend()
-
+plt.savefig("cross_validation_Ndata_MSE_zoom.png")
 plt.show()
 
