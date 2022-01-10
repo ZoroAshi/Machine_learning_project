@@ -130,6 +130,7 @@ plt.plot(complexity,mse_test_cv10,label='MSE test cv 10')
 plt.plot(complexity,mse_train_cv10,label='MSE train cv 10')
 #plt.axis([0,30,0,20])
 plt.legend()
+plt.savefig("cross_validation_complexity.png")
 
 
 
