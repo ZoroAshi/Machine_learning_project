@@ -70,7 +70,7 @@ for j in range (len(sigma)):
 
     #bootstrap
     
-    k=100
+    k=1
     order=6
 
     for i in range (k):
@@ -115,13 +115,14 @@ plt.plot(sigma,mse_train,label='MSE train')
 plt.xscale('log')
 #plt.axis([0,30,0,20])
 plt.legend()
+plt.savefig("MSE noise.png")
 
 plt.figure(2)
 plt.plot(sigma,r2_test,label='R2 test')
 plt.plot(sigma,r2_train,label='R2 train')
 plt.xscale('log')
 plt.legend()
-
+plt.savefig("R2 noise.png")
 
 plt.show()
 
