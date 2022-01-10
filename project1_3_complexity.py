@@ -105,12 +105,14 @@ plt.plot(complexity,mse_test,label='MSE test')
 plt.plot(complexity,mse_train,label='MSE train')
 #plt.axis([0,30,0,20])
 plt.legend()
+plt.savefig("MSE_complexity_bootstrap.png")
 
 plt.figure(2)
 plt.plot(complexity,r2_test,label='R2 test')
 plt.plot(complexity,r2_train,label='R2 train')
 #plt.axis([0,30,0,20])
 plt.legend()
+plt.savefig("R2_complexity_bootstrap.png")
 
 
 plt.show()
